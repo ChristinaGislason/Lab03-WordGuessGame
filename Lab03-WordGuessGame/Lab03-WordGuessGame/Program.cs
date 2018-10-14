@@ -53,17 +53,25 @@ namespace Lab03_WordGuessGame
             }       
         }
 
+        /// <summary>
+        /// Initiates Word Guess Game 
+        /// </summary>
         static void StartGame()
         {
             Console.WriteLine("Start Game initiated.");
+            string path = "../../../myfile.txt";
+            string[] words = File.ReadAllLines(path);
+            Console.WriteLine(words[0]);
+
         }
 
+        
         static void RunAdmin()
         {
             Console.WriteLine("Running Admin functionality");
         }
-        
-/*        ViewAllWords();
+        /*
+        ViewAllWords();
         AddAWord();
         DeleteAWord();
         ReturnToMainMenu();
