@@ -58,10 +58,11 @@ namespace Lab03_WordGuessGame
         /// </summary>
         static void StartGame()
         {
-            Console.WriteLine("Start Game initiated.");
             string path = "../../../myfile.txt";
             string[] words = File.ReadAllLines(path);
-            Console.WriteLine(words[0]);
+            Random random = new Random();
+            int randomIndexChosen = random.Next(0, words.Length);
+            Console.WriteLine(words[randomIndexChosen]);
 
         }
 
