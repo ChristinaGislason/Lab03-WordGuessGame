@@ -28,18 +28,15 @@ namespace Lab03_WordGuessGame
                 int gameOptionChosen;
                 try
                 {
-                    gameOptionChosen = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine(gameOptionChosen);
+                    gameOptionChosen = Convert.ToInt32(Console.ReadLine());                  
                 }
                 catch 
                 {
-                    Console.WriteLine("Invalid selection. Try again.");
+                    Console.WriteLine("Invalid option. Try again.");
                     continue;
                 }
-                /*
-               
-
-                switch (option)
+                             
+                switch (gameOptionChosen)
                 {
                     case 1:
                         StartGame();
@@ -51,10 +48,19 @@ namespace Lab03_WordGuessGame
                         Environment.Exit(0);
                         break;                                     
                     default:
-                        Console.Write("Invalid option. Please choose an option.");                    
                         break;   
-                } */
-            }
+                } 
+            }       
+        }
+
+        static void StartGame()
+        {
+            Console.WriteLine("Start Game initiated.");
+        }
+
+        static void RunAdmin()
+        {
+            Console.WriteLine("Running Admin functionality");
         }
         
 /*        ViewAllWords();
