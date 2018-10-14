@@ -59,17 +59,24 @@ namespace Lab03_WordGuessGame
         static void StartGame()
         {
             string path = "../../../myfile.txt";
-            string[] words = File.ReadAllLines(path);
-            Random random = new Random();
-            int randomIndexChosen = random.Next(0, words.Length);
-            string randomGeneratedWord = words[randomIndexChosen];
 
+            string randomGeneratedWord = getRandomGeneratedWord(path);
+    
             for (int i = 0; i < randomGeneratedWord.Length; i++)
             {
                 Console.Write(" _");
 
             }
             Console.WriteLine("\n");          
+        }
+
+        static string getRandomGeneratedWord(string path)
+        {
+            string[] words = File.ReadAllLines(path);
+            Random random = new Random();
+            int randomIndexChosen = random.Next(0, words.Length);
+            string randomGeneratedWord = words[randomIndexChosen];
+            return randomGeneratedWord;
         }
 
         
