@@ -1,1 +1,6 @@
-Hello Class!
+apple
+banana
+cherry
+kiwi
+orange
+plum
