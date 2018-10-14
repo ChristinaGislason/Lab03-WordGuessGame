@@ -58,21 +58,26 @@ namespace Lab03_WordGuessGame
         /// </summary>
         static void StartGame()
         {
-            string path = "../../../myfile.txt";
 
+            //  GAME SETUP
+            string incorrectLetterList = "";
+
+            // Get random word for game
+            string path = "../../../myfile.txt";
             string randomGeneratedWord = GetRandomGeneratedWord(path);
 
-            char[] currentlyGuessedWord = new char[randomGeneratedWord.Length];
-            for (int i = 0; i < currentlyGuessedWord.Length; i++)
+            // Initialize currently guessed word characters
+            char[] currentlyGuessedWordChars = new char[randomGeneratedWord.Length];
+            for (int i = 0; i < currentlyGuessedWordChars.Length; i++)
             {
-                currentlyGuessedWord[i] = '_';
+                currentlyGuessedWordChars[i] = '_';
             }
 
-            for (int i = 0; i < currentlyGuessedWord.Length; i++)
-            {
-                Console.Write($"{currentlyGuessedWord[i]} ");
-            }
-            Console.WriteLine("\n");          
+
+            // START GAME
+
+            GuessALetter(randomGeneratedWord, currentlyGuessedWordChars, incorrectLetterList);
+
         }
 
         static string GetRandomGeneratedWord(string path)
@@ -84,14 +89,42 @@ namespace Lab03_WordGuessGame
             return randomGeneratedWord;
         }
 
-        static void GuessALetter(string randomGeneratedWord)
+        /// <summary>
+        /// Match user's guessed letter to the word
+        /// </summary>
+        /// <param name="randomGeneratedWord"></param>
+        /// <param name="currentlyGuessedWordChars"></param>
+        static void GuessALetter(string randomGeneratedWord, char[] currentlyGuessedWordChars, string incorrectLetterList)
         {
-            Console.WriteLine("Guess a letter: ");
-            string letter = Console.ReadLine();
+            // Output currently guessed result to user
+            for (int i = 0; i < currentlyGuessedWordChars.Length; i++)
+            {
+                Console.Write($"{currentlyGuessedWordChars[i]} ");
+            }
+            Console.WriteLine("\n");
+
+            Console.WriteLine("Guess a letter: "); 
+            string letterWithNewLine = Console.ReadLine();
+            char letter = letterWithNewLine[0];
+
+
             if (randomGeneratedWord.Contains(letter))
             {
-
+                for (int i = 0; i < randomGeneratedWord.Length; i++)
+                {
+                    if(letter == randomGeneratedWord[i])
+                    {
+                        currentlyGuessedWordChars[i] = letter;
+                    }                   
+                }
             }
+            else
+            {
+                incorrectLetterList += letter;
+                Console.WriteLine($"Letters guessed so far: {incorrectLetterList}");
+            }
+
+  
         }
         
         static void RunAdmin()
