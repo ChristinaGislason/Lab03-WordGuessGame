@@ -11,10 +11,7 @@ namespace Lab03_WordGuessGame
             Console.WriteLine("Welcome, let\'s play a Word Guess Game!");
             WordGuessGame();
             
-
-
-
-            CreateFile();
+            //CreateFile();
         }
 
         static void WordGuessGame() 
@@ -26,8 +23,10 @@ namespace Lab03_WordGuessGame
                 Console.WriteLine("1. Start a Game");
                 Console.WriteLine("2. Admin");
                 Console.WriteLine("3. Exit Game");
+                action = false;
+                /*
                 int option;
-
+            
                 try
                 {
                     option = Convert.ToInt32(Console.ReadLine());
@@ -50,12 +49,12 @@ namespace Lab03_WordGuessGame
                         break;                                     
                     default:
                         Console.Write("Invalid option. Please choose an option.");                    
-                        break;    
-                } 
+                        break;   
+                } */
             }
         }
-
-        ViewAllWords();
+        
+/*        ViewAllWords();
         AddAWord();
         DeleteAWord();
         ReturnToMainMenu();
@@ -93,7 +92,7 @@ namespace Lab03_WordGuessGame
             {
                 // close the file
             }
-            */
+            
             //second way to create a file
 
             try
@@ -109,6 +108,6 @@ namespace Lab03_WordGuessGame
 
                 throw;
             }
-        }
+        } */
     }
 }
