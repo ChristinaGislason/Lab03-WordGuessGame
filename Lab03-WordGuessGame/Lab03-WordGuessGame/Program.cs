@@ -60,17 +60,22 @@ namespace Lab03_WordGuessGame
         {
             string path = "../../../myfile.txt";
 
-            string randomGeneratedWord = getRandomGeneratedWord(path);
-    
-            for (int i = 0; i < randomGeneratedWord.Length; i++)
-            {
-                Console.Write(" _");
+            string randomGeneratedWord = GetRandomGeneratedWord(path);
 
+            char[] currentlyGuessedWord = new char[randomGeneratedWord.Length];
+            for (int i = 0; i < currentlyGuessedWord.Length; i++)
+            {
+                currentlyGuessedWord[i] = '_';
+            }
+
+            for (int i = 0; i < currentlyGuessedWord.Length; i++)
+            {
+                Console.Write($"{currentlyGuessedWord[i]} ");
             }
             Console.WriteLine("\n");          
         }
 
-        static string getRandomGeneratedWord(string path)
+        static string GetRandomGeneratedWord(string path)
         {
             string[] words = File.ReadAllLines(path);
             Random random = new Random();
@@ -79,6 +84,15 @@ namespace Lab03_WordGuessGame
             return randomGeneratedWord;
         }
 
+        static void GuessALetter(string randomGeneratedWord)
+        {
+            Console.WriteLine("Guess a letter: ");
+            string letter = Console.ReadLine();
+            if (randomGeneratedWord.Contains(letter))
+            {
+
+            }
+        }
         
         static void RunAdmin()
         {
