@@ -23,18 +23,21 @@ namespace Lab03_WordGuessGame
                 Console.WriteLine("1. Start a Game");
                 Console.WriteLine("2. Admin");
                 Console.WriteLine("3. Exit Game");
-                action = false;
-                /*
-                int option;
-            
+
+                //Exception handling for options
+                int gameOptionChosen;
                 try
                 {
-                    option = Convert.ToInt32(Console.ReadLine());
+                    gameOptionChosen = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine(gameOptionChosen);
                 }
-                catch (ArgumentOutOfRangeException e)
+                catch 
                 {
-                    option = 5;
+                    Console.WriteLine("Invalid selection. Try again.");
+                    continue;
                 }
+                /*
+               
 
                 switch (option)
                 {
