@@ -76,8 +76,17 @@ namespace Lab03_WordGuessGame
 
             // START GAME
 
-            GuessALetter(randomGeneratedWord, currentlyGuessedWordChars, incorrectLetterList);
+            while (!string.Equals(randomGeneratedWord, new string(currentlyGuessedWordChars)))
+            {
+                GuessALetter(randomGeneratedWord, currentlyGuessedWordChars, incorrectLetterList);
+            }
 
+            // Output currently guessed result to user
+            for (int i = 0; i < currentlyGuessedWordChars.Length; i++)
+            {
+                Console.Write($"{currentlyGuessedWordChars[i]} ");
+            }
+            Console.WriteLine("\nCongrats! You guessed the word.\n\n");
         }
 
         static string GetRandomGeneratedWord(string path)
@@ -123,8 +132,6 @@ namespace Lab03_WordGuessGame
                 incorrectLetterList += letter;
                 Console.WriteLine($"Letters guessed so far: {incorrectLetterList}");
             }
-
-  
         }
         
         static void RunAdmin()
