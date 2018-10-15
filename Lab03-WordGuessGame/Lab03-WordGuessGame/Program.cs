@@ -78,7 +78,7 @@ namespace Lab03_WordGuessGame
 
             while (!string.Equals(randomGeneratedWord, new string(currentlyGuessedWordChars)))
             {
-                GuessALetter(randomGeneratedWord, currentlyGuessedWordChars, incorrectLetterList);
+                GuessALetter(randomGeneratedWord, currentlyGuessedWordChars, ref incorrectLetterList);
             }
 
             // Output currently guessed result to user
@@ -103,7 +103,7 @@ namespace Lab03_WordGuessGame
         /// </summary>
         /// <param name="randomGeneratedWord"></param>
         /// <param name="currentlyGuessedWordChars"></param>
-        static void GuessALetter(string randomGeneratedWord, char[] currentlyGuessedWordChars, string incorrectLetterList)
+        static void GuessALetter(string randomGeneratedWord, char[] currentlyGuessedWordChars, ref string incorrectLetterList)
         {
             // Output currently guessed result to user
             for (int i = 0; i < currentlyGuessedWordChars.Length; i++)
