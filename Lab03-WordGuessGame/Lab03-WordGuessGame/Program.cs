@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab03_WordGuessGame
 {
-    class Program
+    public class Program
     {
         public static string path = "../../../myfile.txt";
 
@@ -187,7 +187,7 @@ namespace Lab03_WordGuessGame
         }
 
 
-        static string[] GetWords()
+        public static string[] GetWords()
         {
             try
             {
@@ -201,7 +201,7 @@ namespace Lab03_WordGuessGame
         }
 
 
-        static void CreateFile(string[] words)
+        public static void CreateFile(string[] words)
         {
             try
             {
@@ -234,7 +234,7 @@ namespace Lab03_WordGuessGame
             }
         }
 
-        static void AddWordToFile(string word)
+        public static void AddWordToFile(string word)
         {
             try
             {

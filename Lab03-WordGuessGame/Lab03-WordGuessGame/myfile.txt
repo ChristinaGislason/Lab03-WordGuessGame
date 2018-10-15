@@ -4,5 +4,3 @@ cherry
 peach
 strawberry
 lemon
-bob
-Hello
