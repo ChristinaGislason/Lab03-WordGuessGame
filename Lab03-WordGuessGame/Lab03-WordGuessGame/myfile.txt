@@ -1,6 +1,6 @@
-apple
 banana
+grapes
 cherry
-kiwi
-orange
-plum
+peach
+strawberry
+lemon

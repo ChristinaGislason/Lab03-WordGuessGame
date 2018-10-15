@@ -9,3 +9,4 @@ Each time a new game session starts, the mystery word chosen comes from an exter
 
 ## Solution
 
+I added methods for reading and writing to a file. I added methods for managing the game interface, admin, and game play.
