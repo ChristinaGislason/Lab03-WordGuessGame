@@ -6,6 +6,8 @@ namespace Lab03_WordGuessGame
 {
     class Program
     {
+        public static string path = "../../../myfile.txt";
+
         static void Main(string[] args)
         {
             string[] words = { "banana", "grapes", "cherry", "peach", "strawberry", "lemon" };
@@ -76,7 +78,7 @@ namespace Lab03_WordGuessGame
                     Console.WriteLine("Invalid option. Try again.");
                     continue;
                 }
-                /*
+                
                 switch (adminOptionChosen)
                 {
                     case 1:
@@ -86,20 +88,22 @@ namespace Lab03_WordGuessGame
                         }
                         break;
                     case 2:
-                        AddWord();
+                        Console.WriteLine("What word do you want to add?");
+                        string wordToAdd = Console.ReadLine();
+                        AddWordToFile(wordToAdd);
                         break;
                     case 3:
                         Console.WriteLine("Which word would you like to remove?");
                         string userRequest = Console.ReadLine();
-                        RemoveWord(userRequest);
+                        // TODO: RemoveWord(userRequest);
                         break;
                     case 4:
-                        returnToMain = true;
-                        StartGame();
+                        WordGuessGame();
+                        break;
                     default:
                         Console.WriteLine("Invalid option. Please try again.");
                         break;
-                }*/
+                }
             }
         }
 
@@ -113,8 +117,8 @@ namespace Lab03_WordGuessGame
             string incorrectLetterList = "";
 
             // Get random word for game
-            string path = "../../../myfile.txt";
-            string randomGeneratedWord = GetRandomGeneratedWord(path);
+            
+            string randomGeneratedWord = GetRandomGeneratedWord();
 
             // Initialize currently guessed word characters
             char[] currentlyGuessedWordChars = new char[randomGeneratedWord.Length];
@@ -138,7 +142,7 @@ namespace Lab03_WordGuessGame
             Console.WriteLine("\nCongrats! You guessed the word.\n\n");
         }
 
-        static string GetRandomGeneratedWord(string path)
+        static string GetRandomGeneratedWord()
         {
             string[] words = File.ReadAllLines(path);
             Random random = new Random();
@@ -183,16 +187,22 @@ namespace Lab03_WordGuessGame
         }
 
 
-        static void GetWords()
+        static string[] GetWords()
         {
+            try
+            {
+                return File.ReadAllLines(path);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
         }
 
 
         static void CreateFile(string[] words)
         {
-            string path = "../../../myfile.txt";
-
             try
             {
                 using (StreamWriter sw = new StreamWriter(path))
@@ -221,6 +231,22 @@ namespace Lab03_WordGuessGame
             finally
             {
                 //
+            }
+        }
+
+        static void AddWordToFile(string word)
+        {
+            try
+            {
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    sw.WriteLine(word);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }
