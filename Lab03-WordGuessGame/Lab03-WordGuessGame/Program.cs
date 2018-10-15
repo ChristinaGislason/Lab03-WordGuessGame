@@ -8,17 +8,18 @@ namespace Lab03_WordGuessGame
     {
         static void Main(string[] args)
         {
+            string[] words = { "banana", "grapes", "cherry", "peach", "strawberry", "lemon" };
+            CreateFile(words);
+
             Console.WriteLine("Welcome, let\'s play a Word Guess Game!");
             WordGuessGame();
-            
-            //CreateFile();
         }
 
-        static void WordGuessGame() 
+        static void WordGuessGame()
         {
             bool action = true;
-            while (action) 
-            {              
+            while (action)
+            {
                 Console.WriteLine("Please select an option:");
                 Console.WriteLine("1. Start a Game");
                 Console.WriteLine("2. Admin");
@@ -28,14 +29,14 @@ namespace Lab03_WordGuessGame
                 int gameOptionChosen;
                 try
                 {
-                    gameOptionChosen = Convert.ToInt32(Console.ReadLine());                  
+                    gameOptionChosen = Convert.ToInt32(Console.ReadLine());
                 }
-                catch 
+                catch
                 {
                     Console.WriteLine("Invalid option. Try again.");
                     continue;
                 }
-                             
+
                 switch (gameOptionChosen)
                 {
                     case 1:
@@ -44,13 +45,62 @@ namespace Lab03_WordGuessGame
                     case 2:
                         RunAdmin();
                         break;
-                    case 3:                                             
+                    case 3:
                         Environment.Exit(0);
-                        break;                                     
+                        break;
                     default:
-                        break;   
-                } 
-            }       
+                        break;
+                }
+            }
+        }
+
+        static void RunAdmin()
+        {
+            bool choice = false;
+            while (!choice)
+            {
+                Console.WriteLine("Please select an option:");
+                Console.WriteLine("1. View all words");
+                Console.WriteLine("2. Add a word");
+                Console.WriteLine("3. Remove a word");
+                Console.WriteLine("4. Return to main menu");
+
+                //Exception handling for options
+                int adminOptionChosen;
+                try
+                {
+                    adminOptionChosen = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid option. Try again.");
+                    continue;
+                }
+                /*
+                switch (adminOptionChosen)
+                {
+                    case 1:
+                        foreach (string word in GetWords())
+                        {
+                            Console.WriteLine(word);
+                        }
+                        break;
+                    case 2:
+                        AddWord();
+                        break;
+                    case 3:
+                        Console.WriteLine("Which word would you like to remove?");
+                        string userRequest = Console.ReadLine();
+                        RemoveWord(userRequest);
+                        break;
+                    case 4:
+                        returnToMain = true;
+                        StartGame();
+                    default:
+                        Console.WriteLine("Invalid option. Please try again.");
+                        break;
+                }*/
+            }
         }
 
         /// <summary>
@@ -58,8 +108,8 @@ namespace Lab03_WordGuessGame
         /// </summary>
         static void StartGame()
         {
-
             //  GAME SETUP
+
             string incorrectLetterList = "";
 
             // Get random word for game
@@ -72,7 +122,6 @@ namespace Lab03_WordGuessGame
             {
                 currentlyGuessedWordChars[i] = '_';
             }
-
 
             // START GAME
 
@@ -112,19 +161,18 @@ namespace Lab03_WordGuessGame
             }
             Console.WriteLine("\n");
 
-            Console.WriteLine("Guess a letter: "); 
+            Console.WriteLine("Guess a letter: ");
             string letterWithNewLine = Console.ReadLine();
             char letter = letterWithNewLine[0];
-
 
             if (randomGeneratedWord.Contains(letter))
             {
                 for (int i = 0; i < randomGeneratedWord.Length; i++)
                 {
-                    if(letter == randomGeneratedWord[i])
+                    if (letter == randomGeneratedWord[i])
                     {
                         currentlyGuessedWordChars[i] = letter;
-                    }                   
+                    }
                 }
             }
             else
@@ -133,33 +181,31 @@ namespace Lab03_WordGuessGame
                 Console.WriteLine($"Letters guessed so far: {incorrectLetterList}");
             }
         }
-        
-        static void RunAdmin()
+
+
+        static void GetWords()
         {
-            Console.WriteLine("Running Admin functionality");
+
         }
-        /*
-        ViewAllWords();
-        AddAWord();
-        DeleteAWord();
-        ReturnToMainMenu();
 
 
-        static void CreateFile()
+        static void CreateFile(string[] words)
         {
             string path = "../../../myfile.txt";
 
-            /*try
-            {       
+            try
+            {
                 using (StreamWriter sw = new StreamWriter(path))
                 {
                     try
                     {
-                        sw.Write("Let\'s play a guessing word game!");
+                        foreach (string word in words)
+                        {
+                            sw.WriteLine(word);
+                        }
                     }
                     catch (Exception)
                     {
-
                         throw;
                     }
                     finally
@@ -170,29 +216,12 @@ namespace Lab03_WordGuessGame
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally
             {
-                // close the file
+                //
             }
-            
-            //second way to create a file
-
-            try
-            {
-                using (FileStream fs = File.Create(path))
-                {
-                    Byte[] myWords = new UTF8Encoding(true).GetBytes("Hello Class!");
-                    fs.Write(myWords, 0, myWords.Length);
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        } */
+        }
     }
 }
