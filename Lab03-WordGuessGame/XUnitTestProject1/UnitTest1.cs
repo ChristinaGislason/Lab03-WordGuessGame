@@ -23,7 +23,7 @@ namespace XUnitTestProject1
         }
 
         /// <summary>
-        /// Test that a word be added to a file
+        /// Test that a word can be added to a file
         /// </summary>
         [Fact]
         public void TestAddWordToFile()
@@ -35,5 +35,22 @@ namespace XUnitTestProject1
 
             Assert.Equal("testword2", allFileLines[allFileLines.Length - 1]);
         }
+        
+        /// <summary>
+        /// Test that a word can be removed from file
+        /// </summary>
+        [Fact]
+        public void TestRemoveWordFromFile()
+        {
+            Program.AddWordToFile("testword3");
+            Program.RemoveWordFromFile("testword3");
+
+            string path = "../../../myfile.txt";
+            string[] allFileLines = File.ReadAllLines(path);
+
+            Assert.NotEqual("testword3", allFileLines[allFileLines.Length - 1]);
+        } 
+
+
     }
 }
