@@ -51,6 +51,22 @@ namespace XUnitTestProject1
             Assert.NotEqual("testword3", allFileLines[allFileLines.Length - 1]);
         } 
 
+        /// <summary>
+        /// Test that all words can be retrieved from file
+        /// </summary>
+        [Fact]
+        public void TestGetAllWordsFromFile()
+        {
+            string[] testWords = { "dog", "cat" };
+            Program.CreateFile(testWords);
+
+            string[] actualWordsFromFile = Program.GetWords();
+
+            // Check to see values, not references, equals each other
+            Assert.Equal(testWords[0], actualWordsFromFile[0]);
+            Assert.Equal(testWords[1], actualWordsFromFile[1]);
+        }
+
 
     }
 }
