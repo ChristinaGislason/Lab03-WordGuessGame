@@ -10,3 +10,9 @@ Each time a new game session starts, the mystery word chosen comes from an exter
 ## Solution
 
 I added methods for reading and writing to a file. I added methods for managing the game interface, admin, and game play.
+
+![Lab03-WordGuessGame-GameScreenCapture](https://github.com/ChristinaGislason/Lab03-WordGuessGame/blob/master/Lab03-%20WordGuessGame-GameScreenCapture.JPG)
+
+![Lab03-WordGuessGame-AdminScreenCapture](
+        Lab03-WordGuessGame/Lab03-WordGuessGame-AdminScreenCapture.JPG
+      )
