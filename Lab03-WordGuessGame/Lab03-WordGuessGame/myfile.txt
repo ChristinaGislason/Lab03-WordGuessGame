@@ -1,6 +1,6 @@
 banana
 grapes
 cherry
-peach
 strawberry
 lemon
+kiwi

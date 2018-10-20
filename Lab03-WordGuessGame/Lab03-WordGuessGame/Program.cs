@@ -95,7 +95,7 @@ namespace Lab03_WordGuessGame
                     case 3:
                         Console.WriteLine("Which word would you like to remove?");
                         string userRequest = Console.ReadLine();
-                        // TODO: RemoveWord(userRequest);
+                        RemoveWordFromFile(userRequest);
                         break;
                     case 4:
                         WordGuessGame();
@@ -186,7 +186,10 @@ namespace Lab03_WordGuessGame
             }
         }
 
-
+        /// <summary>
+        /// Grabs all words from file
+        /// </summary>
+        /// <returns></returns>
         public static string[] GetWords()
         {
             try
@@ -200,7 +203,10 @@ namespace Lab03_WordGuessGame
 
         }
 
-
+        /// <summary>
+        /// Create a file to add words to
+        /// </summary>
+        /// <param name="words"></param>
         public static void CreateFile(string[] words)
         {
             try
@@ -234,6 +240,10 @@ namespace Lab03_WordGuessGame
             }
         }
 
+        /// <summary>
+        /// Method to add a word to a file
+        /// </summary>
+        /// <param name="word"></param>
         public static void AddWordToFile(string word)
         {
             try
@@ -248,6 +258,27 @@ namespace Lab03_WordGuessGame
 
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Method to remove a word from a file
+        /// </summary>
+        /// <param name="word"></param>
+        public static void RemoveWordFromFile(string word)
+        {
+            string[] allWords = GetWords();
+            string[] newWords = new string[allWords.Length - 1];
+            int j = 0;
+            for (int i = 0; i < allWords.Length; i++)
+            {
+                if (word != allWords[i])
+                {
+                    newWords[j++] = allWords[i];
+                }
+            }
+            // Create a file for the new words to be added onto
+
+            CreateFile(newWords);
         }
     }
 }
